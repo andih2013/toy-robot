@@ -73,12 +73,12 @@ REPORT
 
 #### Run the application
 ```
-$ npm start
+$ npm run start
 ```
 with the default file name `command-seq.txt`
 or
 ```
-$ npm start command-seq.txt
+$ npm run start command-seq.txt
 ```
 with given file name
 

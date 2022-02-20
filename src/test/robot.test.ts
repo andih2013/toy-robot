@@ -17,45 +17,45 @@ describe('Robot', () => {
         it('should set position and direction correctly', () => {
             const params = {position: {x: 1, y: 3}, direction: Direction.East} as ICommandParams;
             robot.doPlace(params);
-            expect(robot.report()).toEqual('Report position: 1, 3, EAST');
+            expect(robot.report()).toEqual('Current position: 1, 3, EAST');
         });
 
         it('should ignore invalid PLACE command (out of scope) and not set anything', () => {
             const params = {position: {x: 1, y: 30}, direction: Direction.West} as ICommandParams;
             robot.doPlace(params);
-            expect(robot.report()).toEqual('Report position: 2, 2, NORTH');
+            expect(robot.report()).toEqual('Current position: 2, 2, NORTH');
         });
     });
 
     describe('doMove', () => {
         it('should set position correctly', () => {
             robot.doMove();
-            expect(robot.report()).toEqual('Report position: 2, 3, NORTH');
+            expect(robot.report()).toEqual('Current position: 2, 3, NORTH');
         });
 
         it('should ignore invalid MOVE command (out of scope) and not set anything', () => {
             const params = {position: {x: 4, y: 3}, direction: Direction.East} as ICommandParams;
             robot.doPlace(params);
             robot.doMove();
-            expect(robot.report()).toEqual('Report position: 4, 3, EAST');
+            expect(robot.report()).toEqual('Current position: 4, 3, EAST');
         });
     });
 
     describe('doTurn', () => {
         it('should set direction correctly for LEFT', () => {
             robot.doTurn('LEFT');
-            expect(robot.report()).toEqual('Report position: 2, 2, WEST');
+            expect(robot.report()).toEqual('Current position: 2, 2, WEST');
         });
 
         it('should set direction correctly for RIGHT', () => {
             robot.doTurn('RIGHT');
-            expect(robot.report()).toEqual('Report position: 2, 2, EAST');
+            expect(robot.report()).toEqual('Current position: 2, 2, EAST');
         });
     });
 
     describe('report', () => {
         it('should report current position and direction correctly', () => {
-            expect(robot.report()).toEqual('Report position: 2, 2, NORTH');
+            expect(robot.report()).toEqual('Current position: 2, 2, NORTH');
         });
     });
 });
