@@ -6,7 +6,7 @@
 - The application gets commands from the given .txt file (default file name is `command-seq.txt`) located in the project root folder
 - The application accepts PLACE, MOVE, LEFT, RIGHT and REPORT commands
 
-### Command format requirements
+### Command Format Requirements
 - Each line contains only one command
 - PLACE command requires params of position X, position Y and direction
 - PLACE command and params are separated by whitespace(s)
@@ -78,8 +78,9 @@ $ npm start
 with the default file name `command-seq.txt`
 or
 ```
-npm start command-seq.txt
+$ npm start command-seq.txt
 ```
+with given file name
 
 #### Check the output
 Below is the output of the above example
@@ -113,5 +114,5 @@ Current position: 0, 0, SOUTH
 
 #### Run unit test
 ```
-npm run test
+$ npm run test
 ```
