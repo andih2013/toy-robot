@@ -1,7 +1,7 @@
-import Robot from '../components/robot';
-import Table from '../components/table';
-import { ICommand, ICommandParams } from '../models/command.model';
-import { Direction } from '../models/direction.model';
+import Robot from "../components/robot";
+import Table from "../components/table";
+import { ICommand, ICommandParams } from "../models/command.model";
+import { Direction } from "../models/direction.model";
 
 describe('Robot', () => {
     let robot: Robot;

@@ -8,13 +8,27 @@ export default class Robot {
     private direction: Direction;
     private table: Table;
 
+    /**
+     * Constructor
+     * @param table 
+     * @param posX 
+     * @param posY 
+     * @param direction 
+     */
     constructor(table: Table, posX = 0, posY = 0, direction = Direction.North) {
         this.table = table;
         this.position = {x: posX, y: posY};
         this.direction = direction;
     }
 
-    public executeCommand(command: ICommand) {
+    /**
+     * Execute given command
+     * @param command given command object
+     * @returns 
+     */
+    public executeCommand(command: ICommand): void {
+        const paramsLine = command.command === Command.Place ? `${command.params?.position.x}, ${command.params?.position.y}, ${command.params?.direction}` : '';
+        console.log(`>>> ${command.command} ${paramsLine}`);
         switch(command.command) {
             case Command.Place:
                 if (command.params) {
@@ -38,10 +52,13 @@ export default class Robot {
         }
     }
 
-    public doPlace(params: ICommandParams) {
+    /**
+     * Execute PLACE command with params, and update robot postion and direction if not out of scope
+     * @param params required params for PLACE command
+     */
+    public doPlace(params: ICommandParams): void {
         if (this.table.isOutOfScope(params.position)) {
             // Ignore command if out of scope
-            console.log('New position is out of scope. Command ignored.')
             return;
         }
         this.position.x = params.position.x;
@@ -49,7 +66,10 @@ export default class Robot {
         this.direction = params.direction;
     }
 
-    public doMove() {
+    /**
+     * Execute MOVE command, and update robot postion if not out of scope
+     */
+    public doMove(): void {
         let newPosition = {x: this.position.x, y: this.position.y};
         switch(this.direction) {
             case Direction.North:
@@ -70,11 +90,15 @@ export default class Robot {
         if (!this.table.isOutOfScope(newPosition)) {
             this.position = newPosition;
         } else {
-            console.log('New position is out of scope. Command ignored.')
+            console.log(`New position is out of scope. Command line (MOVE) ignored.`);
         }
     }
 
-    public doTurn(dir: 'LEFT' | 'RIGHT') {
+    /**
+     * Execute LEFT/RIGHT command, and update robot direction
+     * @param dir turning direction
+     */
+    public doTurn(dir: 'LEFT' | 'RIGHT'): void {
         let newDir = this.direction;
         switch(this.direction) {
             case Direction.North:
@@ -95,9 +119,12 @@ export default class Robot {
         this.direction = newDir;
     }
 
-
-    public report() {
-        const reportMessage = `Report position: ${this.position.x}, ${this.position.y}, ${this.direction}`;
+    /**
+     * Execute REPORT command, and print out current position and direction
+     * @returns current position
+     */
+    public report(): string {
+        const reportMessage = `Current position: ${this.position.x}, ${this.position.y}, ${this.direction}`;
         console.log(reportMessage);
         return reportMessage;
     }

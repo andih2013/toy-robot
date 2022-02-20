@@ -1,4 +1,4 @@
-import Table from '../components/table';
+import Table from "../components/table";
 
 describe('Table isOutOfScope', () => {
     let table: Table;

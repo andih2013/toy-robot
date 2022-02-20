@@ -5,9 +5,10 @@ import Table from "./components/table";
 // Get 1st arg, and ignore the rest
 const myArgs = process.argv.slice(2, 3);
 
-// default file name is command-seq.txt
+// Default file name is command-seq.txt
 const fileName = myArgs.length ? myArgs[0] : 'command-seq.txt';
 
+// Get command sequence (as string[]) from the given file
 const commandSeq = CommandReader.getCommandSequence(fileName);
 
 const table = new Table(5, 5);

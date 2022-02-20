@@ -1,5 +1,4 @@
-import CommandReader from '../components/command-reader';
-import { Command, ICommand } from '../models/command.model';
+import CommandReader from "../components/command-reader";
 
 describe('CommandReader', () => {
     describe('getCommandSequence', () => {
